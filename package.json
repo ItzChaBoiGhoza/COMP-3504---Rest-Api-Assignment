@@ -1,14 +1,17 @@
 {
   "name": "comp-3504-rest-api-assignment",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ItzChaBoiGhoza/COMP-3504-Rest-Api-Assignment"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   },
   "keywords": [],
   "author": "Sharia, Dominic, and Ghoza",

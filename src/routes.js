@@ -16,12 +16,9 @@ module.exports.register = (app, database) => {
     });
 
     app.get('/api/items/:id', async (req, res) => {
-        let query;
-        const params = req.params;
+        const id = req.params.id;
 
-        query = database.query('SELECT * FROM items WHERE id = ?', params);
-
-        const records = await query;
+        const records = await database.query('SELECT * FROM items WHERE id = ?', [id]);
 
         res.status(200).send(JSON.stringify(records)).end();
     })

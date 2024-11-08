@@ -18,7 +18,7 @@ module.exports.register = (app, database) => {
     app.get('/api/suppliers', async (req, res) => {
         const records = database.query('SELECT * FROM suppliers');
 
-        res.status(200).sen(JSON.stringify(records)).end();
+        res.status(200).send(JSON.stringify(records)).end();
     })
 
 };

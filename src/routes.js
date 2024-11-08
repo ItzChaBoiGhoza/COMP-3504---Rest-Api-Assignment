@@ -21,6 +21,8 @@ module.exports.register = (app, database) => {
 
         query = database.query('SELECT * FROM items WHERE id = ?', params);
 
+        const records = await query;
+
         res.status(200).send(JSON.stringify(records)).end();
     })
 

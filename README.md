@@ -1,6 +1,4 @@
-# rest-API-template
-
-This is a sample REST API implementation using Express JS and MySQL. The code in the main branch is working with MySQL database. 
+# rest-API-Assignment
 
 
 ## Runing the code
@@ -12,9 +10,7 @@ This is a sample REST API implementation using Express JS and MySQL. The code in
 
 
 ## REST Endpoints
-This is a sample documentation. At the time when you check this, the server might not be available to use the endpoint.
 
-BaseURL: https://your-website-address.com/
 
 | Method        | Endpoint           | Parameters  | Description  |
 | ------------- |:-------------:| -----:| -----:|

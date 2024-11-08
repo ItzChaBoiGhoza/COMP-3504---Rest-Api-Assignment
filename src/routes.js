@@ -16,7 +16,10 @@ module.exports.register = (app, database) => {
     });
 
     app.get('/api/suppliers', async (req, res) => {
-        const records = database.query('SELECT * FROM suppliers');
+        let query;
+        query = database.query('SELECT * FROM suppliers');
+
+        const records = await query;
 
         res.status(200).send(JSON.stringify(records)).end();
     })

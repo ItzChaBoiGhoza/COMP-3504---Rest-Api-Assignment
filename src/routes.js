@@ -6,13 +6,19 @@ module.exports.register = (app, database) => {
         res.status(200).send("This is running!").end();
     });
 
-    app.get('/api/resources', async (req, res) => {
+    app.get('/api/items', async (req, res) => {
         let query;
-        query = database.query('SELECT * FROM rest_emp');
+        query = database.query('SELECT * FROM items');
 
         const records = await query;
 
         res.status(200).send(JSON.stringify(records)).end();
     });
+
+    app.get('/api/suppliers', async (req, res) => {
+        const records = database.query('SELECT * FROM suppliers');
+
+        res.status(200).sen(JSON.stringify(records)).end();
+    })
 
 };

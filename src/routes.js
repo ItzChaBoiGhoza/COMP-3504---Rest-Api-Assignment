@@ -111,4 +111,51 @@ module.exports.register = (app, database) => {
         }
     })
 
+    app.post('/api/suppliers', async (req, res) => {
+        const { supplier_name, address, owner_name } = req.body;
+
+        try {        
+            const query = 'INSERT INTO suppliers (supplier_name, address, owner_name) VALUES (?,?,?)';
+            const result = await database.query(query, [supplier_name, address, owner_name]);            
+
+            res.status(201).json({id: result.insertId, supplier_name, address, owner_name});
+        } catch (e) {
+            res.status(500).json({message: "Supplier is not successfully added to the database"});
+        }
+    });
+
+    app.put('/api/suppliers', async (req, res) => {
+        const id = req.query.id;
+        const { supplier_name, address, owner_name } = req.body;
+
+        try {
+            const query = 'UPDATE suppliers SET supplier_name = ?, address = ?, owner_name = ? WHERE id = ?';
+            const result = await database.query(query, [supplier_name, address, owner_name, id]);
+
+            if (result.affectedRows === 0) {
+                return res.status(404).json({ error: "Supplier not found" });
+            }
+
+            res.status(200).json({ message: "Supplier has been updated!" });
+        } catch (e) {
+            res.status(500).json({ message: "Unable to update supplier" });
+        }
+    });
+
+    app.delete('/api/suppliers', async (req, res) => {
+        const id = req.query.id;
+
+        try {        
+            const result = await database.query('DELETE FROM suppliers WHERE id = ?', [id]);
+            
+            if(result.affectedRows === 0) {
+                return res.status(404).json({message: "Supplier not found"});
+            }
+
+            res.status(200).json({message: "Supplier deleted successfully"});
+        } catch(e) {
+            res.status(500).json({message: "Supplier not found"});
+        }
+    });
+
 };

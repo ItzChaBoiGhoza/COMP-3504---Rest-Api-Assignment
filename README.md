@@ -14,7 +14,7 @@
 
 | Method        | Endpoint           | Parameters  | Description  |
 | ------------- |:-------------:| -----:| -----:|
-| GET  | api/resources |  | Find the list of all records in the endpoint|
+| GET  | api/resources |  | Find the list of all records in the endpoint.|
 | GET    | `/`                    |                              | Basic route to check if the server is running. Responds with a simple message.                   |
 | GET    | `/api/items`           | `item_name` (query)         | Fetches all items or filters by `item_name` if provided.                                        |
 | GET    | `/api/items/:id`       | `id` (path)                 | Retrieves details of a specific item by its `id`.                                               |
@@ -23,3 +23,6 @@
 | DELETE | `/api/items`           | `id` (query)                | Deletes a specific item based on the provided `id`. Returns a success message or error if not found. |
 | GET    | `/api/suppliers`       | `supplier_name` (query)     | Fetches all suppliers or filters by `supplier_name` if provided.                                |
 | GET    | `/api/suppliers/:id`   | `id` (path)                 | Retrieves details of a specific supplier by their `id`.                                         |
+| POST   | `/api/suppliers`       | `supplier_name`, `address`, `owner_name` (body) | Adds a new supplier to the database. Returns the added supplier details, including the generated `id`. |
+| PUT    | `/api/suppliers`       | `id` (query), `supplier_name`, `address`, `owner_name` (body) | Updates an existing supplier’s details based on the provided `id`. Returns a success message or error if not found. |
+| DELETE | `/api/suppliers`       | `id` (query)                | Deletes a specific supplier based on the provided `id`. Returns a success message or error if not found. |

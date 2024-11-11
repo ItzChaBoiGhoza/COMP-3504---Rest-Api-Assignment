@@ -88,9 +88,9 @@ module.exports.register = (app, database) => {
             let records;
 
             if(supplier_name) {
-                records = database.query('SELECT * FROM suppliers WHERE supplier_name = ?', [supplier_name]);
+                records = await database.query('SELECT * FROM suppliers WHERE supplier_name = ?', [supplier_name]);
             } else {
-                records = database.query('SELECT id, supplier_name FROM suppliers');
+                records = await database.query('SELECT id, supplier_name FROM suppliers');
             }
 
             res.status(200).send(JSON.stringify(records)).end();
